@@ -8,6 +8,7 @@ from kivy.vector import Vector
 from random import randint
 from kivy.core.audio import SoundLoader
 
+
 class PongPaddle(Widget):
     score = NumericProperty(0)
 
@@ -18,9 +19,6 @@ class PongPaddle(Widget):
             bounced = Vector(-1 * vx, vy)
             vel = bounced * 1.1
             ball.velocity = vel.x, vel.y + offset
-
-
-
 
 
 class PongBall(Widget):
@@ -36,15 +34,14 @@ class PongGame(Widget):
     ball = ObjectProperty(None)
     player1 = ObjectProperty(None)
     player2 = ObjectProperty(None)
-    sound = SoundLoader.load('/home/marviorocha/PycharmProjects/pong_game/bossa.wav')
+    sound = SoundLoader.load('song/bossa.wav')
 
     def play_song(self):
-       self.sound.play()
+        self.sound.play()
 
     def serve_ball(self, vel=(4, 0)):
         self.ball.center = self.center
-        self.ball.velocity = vel
-
+        self.ball.velocity = Vector(4, 0).rotate(randint(0, 360))
 
     def update(self, dt):
 
@@ -62,11 +59,14 @@ class PongGame(Widget):
         if self.ball.right > self.width:
             self.player1.score += 1
             self.serve_ball(vel=(-4, 0))
+
     def on_touch_move(self, touch):
         if touch.x < self.width / 3:
             self.player1.center_y = touch.y
         if touch.x > self.width - self.width / 3:
             self.player2.center_y = touch.y
+
+
 class PongApp(App):
     def build(self):
         game = PongGame()
