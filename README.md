@@ -2,7 +2,9 @@
 
 Welcome to PongGame made with Python! This game was basead on tutorial Kivy [here](https://kivy.org/doc/stable/tutorials/pong.html).
 
-!['My First Game by Python'](images/pong_screen.png "Text for Images")
+### Game Preview
+
+[Screencast from 2023-01-29 12-27-01.webm](https://user-images.githubusercontent.com/1095267/215336739-a54852ee-85f8-41f2-a455-e70cbd04877e.webm)
 
 ### Requirements
 To run this game, you will need Python 3 and Kivy installed on your computer. 
